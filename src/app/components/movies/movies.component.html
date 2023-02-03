@@ -1,0 +1,35 @@
+<section class="movies">
+  <h2>MOVIES</h2>
+  <h3>{{genre}}</h3>
+  <h3>top10 {{topTen}}</h3>
+  <div class="movies_list">
+
+    <ng-template [ngIf]="topTen">
+      <div *ngFor="let film of films" class="movie">
+        <ng-template [ngIf]="film.topTen === topTen">
+          <p class="movie_title" > 
+            {{ film.title }} 
+          </p>
+          <div class="movie_cover" >
+            <img src="{{ film.image }}" alt="movie cover">
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+
+    <ng-template [ngIf]="!topTen && genre">
+      <div *ngFor="let film of films" class="movie">
+        <ng-template [ngIf]="film.genre === genre && !film.topTen ">
+          <p class="movie_title" > 
+            {{ film.title }} 
+          </p>
+          <div class="movie_cover" >
+            <img src="{{ film.image }}" alt="movie cover">
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+
+  </div>
+
+</section>
